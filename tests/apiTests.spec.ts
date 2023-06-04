@@ -23,4 +23,16 @@ test('Api test - assert response status get list users', async ({ request }) => 
     expect(responseBody.data).toBeTruthy();
     expect(responseBody.support).toBeTruthy();
   })
+
+  test('Api test - assert response status get list  unknown users', async ({ request }) => {
+    const response = await request.get(`${BASE_URL}/unknown`);
+    const responseBody = JSON.parse(await response.text());
+
+    expect(response.status()).toBe(200);
+    expect(responseBody.page).toBeTruthy();
+    expect(responseBody.data).toBeTruthy();
+    expect(responseBody.support).toBeTruthy();
+  })
+
 });
+
