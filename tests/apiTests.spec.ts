@@ -33,9 +33,6 @@ test('Api test - assert response status get list users', async ({ request }) => 
     expect(responseBody.data).toBeTruthy();
     expect(responseBody.support).toBeTruthy();
   })
-
-});
-
   //CREATE
   test('Api test - assert response status create', async ({ request }) => {
     const response = await request.post(`${BASE_URL}/user`, {
@@ -65,3 +62,10 @@ test('Api test - assert response status get list users', async ({ request }) => 
     expect(responseBody.job).toBe('zion resident');
     expect(response.status()).toBe(200);
   })
+    test('Api test - assert response status delete', async ({ request }) => {
+    const response = await request.delete(`${BASE_URL}/users/2`);
+    expect(response.status()).toBe(204);
+  })
+});
+
+
