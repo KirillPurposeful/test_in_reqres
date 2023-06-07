@@ -36,3 +36,17 @@ test('Api test - assert response status get list users', async ({ request }) => 
 
 });
 
+  //CREATE
+  test('Api test - assert response status create', async ({ request }) => {
+    const response = await request.post(`${BASE_URL}/user`, {
+      data: {
+        id: 1000,
+      },
+    });
+
+    const responseBody = JSON.parse(await response.text());
+    expect(responseBody.id).toBe(1000);
+    expect(responseBody.createdAt).toBeTruthy();
+    expect(response.status()).toBe(201);
+
+  })
