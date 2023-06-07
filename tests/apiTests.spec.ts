@@ -66,6 +66,11 @@ test('Api test - assert response status get list users', async ({ request }) => 
     const response = await request.delete(`${BASE_URL}/users/2`);
     expect(response.status()).toBe(204);
   })
+  //DELETE
+  test('Api test - assert response status delete', async ({ request }) => {
+    const response = await request.delete(`${BASE_URL}/users/2`);
+    expect(response.status()).toBe(204);
+  })
 });
 
 
