@@ -50,3 +50,18 @@ test('Api test - assert response status get list users', async ({ request }) => 
     expect(response.status()).toBe(201);
 
   })
+
+  
+  test('Api test - assert response status update', async ({ request }) => {
+    const response = await request.put(`${BASE_URL}/users/2`,
+      {
+        data: {
+          name: "morpheus",
+          job: "zion resident"
+        }
+      });
+    const responseBody = JSON.parse(await response.text());
+    expect(responseBody.name).toBe('morpheus');
+    expect(responseBody.job).toBe('zion resident');
+    expect(response.status()).toBe(200);
+  })
